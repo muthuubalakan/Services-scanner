@@ -5,6 +5,8 @@ import json
 
 __all__ = ['PortChecker']
 
+PATH = 'assets/conf.json'
+
 
 class PortChecker:
     """Return port information
@@ -19,7 +21,7 @@ class PortChecker:
     def load_json(self):
         # Use configuration file
         # predefine
-        data = open("conf.json")
+        data = open(PATH)
         data = json.load(data)
         return data
 
