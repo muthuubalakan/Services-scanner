@@ -1,38 +1,36 @@
-#
-# Neccessary modules
+import sys
 import os
-import json
 
-__all__ = ['PortChecker']
-
-PATH = 'assets/conf.json'
+PLATFORM = 'linux'
 
 
 class PortChecker:
-    """Return port information
+    """PortChecker version 0.0.2
 
-    PortChecker list out all assigned ports in Linux-machine.
+    Argument:
+        filename ---- >> configuration path
 
-    PortChecker.port_finder() gives the open port with details
-    other arguments:
-        query provides additional information about port assignment.
+    Usage:
+        PortChecker(path)
     """
-
-    def load_json(self):
-        # Use configuration file
-        # predefine
-        data = open(PATH)
-        data = json.load(data)
-        return data
+    def __init__(self, filename):
+        self.filename = filename
 
     def get_data(self):
         # return read file object
-        data = self.load_json()
+        data = self.filename
         path = data.get('filename', {}).get('path')
         filename = data.get('filename', {}).get('file_')
         filename = path + '/' + filename
         if not self.is_file(filename):
-            return False
+            platform = sys.platform
+            if platform != PLATFORM:
+                sys.stderr.write("Only runs on Linux\n")
+                sys.exit(1)
+            files = os.listdir("/etc")
+            for f in files:
+                if 'services' in f:
+                    filename = "/etc/"+f
         read_file = open(filename, 'r')
         return read_file
 
@@ -53,13 +51,6 @@ class PortChecker:
         return False
 
     def file_to_dict(self):
-        # Unnecessary checkups, Remove it if it doesn't make any sense.
-        if not self.is_file:
-            files = os.listdir("/etc")
-            for file_ in files:
-                if 'service' in file_:
-                    print("Possible file >>>", file_)
-
         filename = self.get_data()
         result = {}
         # Slicing data
