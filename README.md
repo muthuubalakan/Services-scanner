@@ -5,7 +5,7 @@
 Consists of Asynchronous scanner and list of configured ports of running linux machine.
 
 ## Requirements: 
-python3
+# Python3 - asyncio
 
 Platform: Linux
 
