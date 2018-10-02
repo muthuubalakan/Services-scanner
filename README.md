@@ -5,11 +5,11 @@
 Consists of Asynchronous scanner and list of configured ports of running linux machine.
 
 ## Requirements: 
-# Python3 - asyncio
+### Python3 - asyncio
 
 Platform: Linux
 
-Usage:
+### Usage:
 
 ```python
 
