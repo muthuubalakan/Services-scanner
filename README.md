@@ -1,11 +1,13 @@
 # Porchecker
 
-**Information about ports**
+**vulnerability check for Linux server**
+
+Consists of Asynchronous scanner and list of configured ports of running linux machine.
 
 ## Requirements: 
 python3
 
-Linux- Debian(Recommended)
+Platform: Linux
 
 Usage:
 
