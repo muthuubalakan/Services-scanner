@@ -23,7 +23,7 @@ You will get
 
 TODO:
 ----
-- Print with nice output column on the terminal
+- Print result with nice output column on the terminal
 
 ## Requirements: 
 - asyncio
