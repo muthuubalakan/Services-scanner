@@ -46,10 +46,6 @@ pip install psutil
 
 ```
 
-Compile
--------
-Or else, you can compile the code and  execute directly from terminal.
-
 
 ### Usage:
 
@@ -62,6 +58,11 @@ from portscanner import TCPScanner
 scanner = TCPScanner()
 scanner.scan
    ```
+   
+Compile
+-------
+Or else, you can compile the code and  execute directly from terminal.
+
 
 Expected Error:
 ---------------
