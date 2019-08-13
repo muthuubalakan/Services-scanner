@@ -5,8 +5,7 @@
 List all running services on the linux machine. 
 
 
-You will get
-------------
+**You will get**
 
 - Running services'name
 - Designated port
@@ -21,8 +20,8 @@ You will get
 | ngnix         | 80         | SCTP     |HTTP      |
 
 
-TODO:
-----
+### TODO:
+
 - Print result with nice output column on the terminal
 
 ## Requirements: 
@@ -32,8 +31,8 @@ TODO:
 
 ## Installation:
 
-check python version.
---------------------
+#### check python version.
+
 Requires *python* version *3.6+*
 
 pip install -r requirements.txt
@@ -57,12 +56,13 @@ scanner = TCPScanner()
 scanner.scan
    ```
    
-Compile
--------
+### Compile
+
 Or else, you can compile the code and  execute directly from terminal.
 
 
-Expected Error:
----------------
+#### Expected Error:
+
 - Async loop error.
+
 Such a case, open new async loop *asyncio.new_event_loop()* and run the script.
