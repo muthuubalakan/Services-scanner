@@ -28,8 +28,6 @@ TODO:
 ## Requirements: 
 - asyncio
 - psutil
-
-__FOR LINUX__
 - [Linux](https://www.linux.org/)
 
 ## Installation:
