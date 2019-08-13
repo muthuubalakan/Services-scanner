@@ -1,14 +1,14 @@
 # Service Scanner
 
-**Running services for linux**
+**Get running services on linux**
 
 List all running services on the linux machine. 
 
 
-You will get,
+You will get
 ------------
 
-- Running services name
+- Running services'name
 - Designated port
 - Ports protocol
 - services type
