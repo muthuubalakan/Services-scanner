@@ -12,6 +12,7 @@ List all running services on the linux machine.
 - Ports protocol
 - services type
 
+**same as netstat tool**
 
 | Service       |  Port      | Protocol | TYPE     |
 | ------------- |:----------:| --------:|---------:|
