@@ -65,4 +65,4 @@ Or else, you can compile the code and  execute directly from terminal.
 
 - Async loop error.
 
-Such a case, open new async loop *asyncio.new_event_loop()* and run the script.
+Such a case, open a new async loop *asyncio.new_event_loop()* and run the script.
