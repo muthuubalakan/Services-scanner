@@ -20,6 +20,8 @@ List all running services on the linux machine.
 | postgres      | 5332       | UDP      |Postgres  |
 | ngnix         | 80         | SCTP     |HTTP      |
 
+**as scanner** 
+You can use it on your remote server to check for vulnerabilities
 
 ### TODO:
 
@@ -51,15 +53,14 @@ pip install psutil
 
 from portscanner import TCPScanner
 
+# If it is localhost, return running service,
+# if it is remote, return open ports.
+host = 'localhost'
 
-# simple call
-scanner = TCPScanner()
+scanner = TCPScanner(host=host, remote=False)
 scanner.scan
-   ```
-   
-### Compile
 
-Or else, you can compile the code and  execute directly from terminal.
+```
 
 
 #### Expected Error:

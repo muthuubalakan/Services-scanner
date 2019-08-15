@@ -33,7 +33,7 @@ class Services:
 
 
 class ProtocolChecker:
-    
+
     @property
     def read_proto(self):
         with open('/etc/services', 'r') as f:
@@ -45,7 +45,7 @@ class ProtocolChecker:
             return None
         for line in self.get_data():
             yield line
-            
+
 
     def file_to_dict(self):
         result = {}
@@ -69,7 +69,7 @@ class ProtocolChecker:
         port_number = service.get('port')
         name = service.get('name')
         result = self.file_to_dict()
-      
+
         for key, value in result.items():
             ports_ip = value.split('/')
             if ports_ip[0] == str(port_number):
@@ -78,49 +78,48 @@ class ProtocolChecker:
 
 
 class Scanner:
-    
-    
+
+
     class TCPConnection:
-        
+
         def __init__(self):
-            self.family = socket.AF_INET   # Use it for debugging.
-            self.type = socket.SOCK_STREAM
-            self.sock = socket.socket(self.family, self.type)
-        
+            self.sock = socket.socket(socket.AF_INET,  socket.SOCK_STREAM)
+
         def __repr__(self):
             return 'TCPConnection(socket={})'.format(self.sock)
-        
+
         async def __aenter__(self):
             return self.sock
-            
+
         async def __aexit__(self, *args):
             self.sock.close()
-            
-            
-    def __init__(self):
-        self._host = '127.0.0.1'
+
+
+    def __init__(self, host, remote=False):
+        self._host = host
+        self.remote = remote
         self.loop = asyncio.get_event_loop()
 
     async def port_match(self, port_list):
         if not port_list:
             sys.stdout("No open ports.")
             sys.exit(SUCCESS)
-        
+
         assert hasattr(self, 'port_finder'), (
             'Need `port_finder`'
         )
         print("Service" + " "*30 + "Port" + " "*30 + "Protocol" + " "*30+  "Type" + "\n\n")
         s = Services()
         running_services = s.processes()
-        
+
         all_services = []
         for service in running_services:
             for port in port_list:
                 if service.get('port') == port:
                     all_services.append(service)
-                    
 
-        for service in all_services:        
+
+        for service in all_services:
             self.port_finder(service)
 
 
@@ -134,19 +133,21 @@ class Scanner:
                     if port_number == 0:
                         open_ports.append(port)
             return open_ports
-    
+
     async def task(self, max):
         port_list = await self.run(max)
+        if self.remote:
+            return "OPEN: {}".format(port_list)
         await self.port_match(port_list)
         await self.ports_protocols()
-    
+
     async def ports_protocols(self):
         pass
-    
+
     @property
     def scan(self):
         self.loop.run_until_complete(self.task(PORT_MAX))
-        
+
 
 
 class TCPScanner(Scanner, ProtocolChecker):
